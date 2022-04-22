@@ -18,3 +18,8 @@ def get_p_value(T):
   c2 = float(det) / T[0].sum() * det / T[1].sum() * T.sum() / T[:,0].sum() / T[:,1].sum()
   p = 1 - chi2.cdf(x=c2, df=1)
   return p
+
+def run_experiment(p1, p2, N):
+  data = DataGenerator(p1, p2)
+  p_values = np.empty(N)
+  T = np.zeros((2, 2)).astype(np.float32)
