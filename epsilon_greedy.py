@@ -18,3 +18,8 @@ class BanditArm:
   def pull(self):
     # draw a 1 with probability p
     return np.random.random() < self.p
+
+  def update(self, x):
+    self.N += 1.
+    self.p_estimate = ((self.N - 1)*self.p_estimate + x) / self.N
+    
