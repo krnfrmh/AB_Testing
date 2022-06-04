@@ -23,3 +23,6 @@ class BanditArm:
     self.N += 1.
     self.p_estimate = ((self.N - 1)*self.p_estimate + x) / self.N
     
+def choose_random_argmax(a):
+  idx = np.argwhere(np.amax(a) == a).flatten()
+  return np.random.choice(idx)
