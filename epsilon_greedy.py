@@ -26,3 +26,13 @@ class BanditArm:
 def choose_random_argmax(a):
   idx = np.argwhere(np.amax(a) == a).flatten()
   return np.random.choice(idx)
+
+def experiment():
+  bandits = [BanditArm(p) for p in BANDIT_PROBABILITIES]
+
+  rewards = np.zeros(NUM_TRIALS)
+  num_times_explored = 0
+  num_times_exploited = 0
+  num_optimal = 0
+  optimal_j = np.argmax([b.p for b in bandits])
+  
