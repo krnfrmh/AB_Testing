@@ -36,3 +36,12 @@ def experiment():
   num_optimal = 0
   optimal_j = np.argmax([b.p for b in bandits])
   
+  for i in range(NUM_TRIALS):
+
+    # use epsilon-greedy to select the next bandit
+    if np.random.random() < EPS:
+      num_times_explored += 1
+      j = np.random.randint(len(bandits))
+    else:
+      num_times_exploited += 1
+      j = choose_random_argmax([b.p_estimate for b in bandits])
