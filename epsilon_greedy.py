@@ -45,3 +45,10 @@ def experiment():
     else:
       num_times_exploited += 1
       j = choose_random_argmax([b.p_estimate for b in bandits])
+      
+    x = bandits[j].pull()
+    # update rewards
+    rewards[i] = x
+
+    # update the distribution for the bandit whose arm we pulled
+    bandits[j].update(x)
