@@ -11,3 +11,11 @@ class Bandit:
     self.p = p
     self.p_estimate = 5
     self.N = 1
+    
+  def pull(self):
+    return np.random.random() < self.p
+
+  def update(self, x):
+    self.N += 1.
+    self.p_estimate = ((self.N - 1)*self.p_estimate + x) / self.N
+
