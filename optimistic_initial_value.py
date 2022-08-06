@@ -18,4 +18,13 @@ class Bandit:
   def update(self, x):
     self.N += 1.
     self.p_estimate = ((self.N - 1)*self.p_estimate + x) / self.N
+    
+    
+def experiment():
+  bandits = [Bandit(p) for p in BANDIT_PROBABILITIES]
+
+  rewards = np.zeros(NUM_TRIALS)
+  for i in range(NUM_TRIALS):
+    # use optimistic initial values to select the next bandit
+    j = np.argmax([b.p_estimate for b in bandits])
 
