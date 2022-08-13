@@ -28,3 +28,11 @@ def experiment():
     # use optimistic initial values to select the next bandit
     j = np.argmax([b.p_estimate for b in bandits])
 
+    # pull the arm for the bandit with the largest sample
+    x = bandits[j].pull()
+
+    # update rewards log
+    rewards[i] = x
+
+    # update the distribution for the bandit whose arm we just pulled
+    bandits[j].update(x)
