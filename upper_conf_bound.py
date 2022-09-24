@@ -17,3 +17,5 @@ class Bandit:
     self.N += 1.
     self.p_estimate = ((self.N - 1)*self.p_estimate + x) / self.N
     
+def ucb(mean, n, nj):
+  return mean + np.sqrt(2*np.log(n) / nj)
