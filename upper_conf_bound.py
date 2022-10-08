@@ -19,3 +19,8 @@ class Bandit:
     
 def ucb(mean, n, nj):
   return mean + np.sqrt(2*np.log(n) / nj)
+
+def run_experiment():
+  bandits = [Bandit(p) for p in BANDIT_PROBABILITIES]
+  rewards = np.empty(NUM_TRIALS)
+  total_plays = 0
