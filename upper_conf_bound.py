@@ -24,3 +24,9 @@ def run_experiment():
   bandits = [Bandit(p) for p in BANDIT_PROBABILITIES]
   rewards = np.empty(NUM_TRIALS)
   total_plays = 0
+
+  # Explore each bandit
+  for j in range(len(bandits)):
+    x = bandits[j].pull()
+    total_plays += 1
+    bandits[j].update(x)
